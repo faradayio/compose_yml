@@ -48,10 +48,10 @@ impl<T: MergeOverride> MergeOverride for Option<T> {
     /// neither is present, return `None`.
     fn merge_override(&self, ovr: &Self) -> Self {
         match (self, ovr) {
-            (&Some(ref x), &Some(ref y)) => Some(x.merge_override(y)),
-            (&Some(ref x), &None) => Some(x.to_owned()),
-            (&None, &Some(ref y)) => Some(y.to_owned()),
-            (&None, &None) => None,
+            (Some(x), Some(y)) => Some(x.merge_override(y)),
+            (Some(x), None) => Some(x.to_owned()),
+            (None, Some(y)) => Some(y.to_owned()),
+            (None, None) => None,
         }
     }
 }

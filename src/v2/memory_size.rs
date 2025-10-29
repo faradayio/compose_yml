@@ -43,11 +43,11 @@ impl fmt::Display for MemorySize {
             // Just print 0 without any units, because anything else looks
             // weird.
             write!(f, "0")
-        } else if bytes % (1024 * 1024 * 1024) == 0 {
+        } else if bytes.is_multiple_of(1024 * 1024 * 1024) {
             write!(f, "{}g", bytes / (1024 * 1024 * 1024))
-        } else if bytes % (1024 * 1024) == 0 {
+        } else if bytes.is_multiple_of(1024 * 1024) {
             write!(f, "{}m", bytes / (1024 * 1024))
-        } else if bytes % 1024 == 0 {
+        } else if bytes.is_multiple_of(1024) {
             write!(f, "{}k", bytes / 1024)
         } else {
             // `b` is the default specifier, so don't print it.

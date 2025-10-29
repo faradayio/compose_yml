@@ -192,7 +192,7 @@ fn file_checks_version_number() {
     assert!(File::from_str(&yaml).is_err());
 }
 
-// TODO: Disabled pending https://github.com/emk/compose_yml/issues/11
+// TODO: Disabled pending https://github.com/faradayio/compose_yml/issues/11
 #[test]
 #[ignore]
 fn file_validates_against_schema() {

@@ -16,7 +16,7 @@ impl Context {
     /// local path or a remote git repository.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     /// dc::Context::new("https://github.com/docker/docker.git");
     /// dc::Context::new("src/myapp");
     /// ```

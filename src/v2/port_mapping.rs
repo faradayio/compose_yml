@@ -55,18 +55,13 @@ impl FromStr for Ports {
 }
 
 /// An IP protocol
-#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Default)]
 pub enum Protocol {
     /// Transmission Control Protocol, the default.
+    #[default]
     Tcp,
     /// User Datagram Protocol.
     Udp,
-}
-
-impl Default for Protocol {
-    fn default() -> Self {
-        Protocol::Tcp
-    }
 }
 
 impl fmt::Display for Protocol {
@@ -120,7 +115,7 @@ impl PortMapping {
     /// map port ranges.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     ///
     /// let mapping = dc::PortMapping::new(80, 3000);
     /// assert_eq!(mapping.host_address, None);
@@ -148,7 +143,7 @@ impl PortMapping {
     /// Can also be used with a port range.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     ///
     /// let mapping = dc::PortMapping::any_to(3000);
     /// assert_eq!(mapping.host_address, None);

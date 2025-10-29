@@ -1,9 +1,10 @@
 use super::common::*;
 
 /// Mount modes on volumes that are mapped into the Docker container.
-#[derive(Debug, Eq, PartialEq, Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, Default)]
 pub enum VolumeModes {
     /// This volume can be read and written (default).
+    #[default]
     ReadWrite,
     /// This volume is read-only.
     ReadOnly,
@@ -13,12 +14,6 @@ pub enum VolumeModes {
     Cached,
     /// Permit delays before updates on the container appear in the host.
     Delegated,
-}
-
-impl Default for VolumeModes {
-    fn default() -> VolumeModes {
-        VolumeModes::ReadWrite
-    }
 }
 
 impl fmt::Display for VolumeModes {

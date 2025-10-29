@@ -116,7 +116,7 @@ fn interpolate_helper(
                 // We're just validating syntax, not interpolating.
                 _ if mode == Mode::Validate => "".to_owned(),
                 // `${FOO:-default}` with a set-but-empty environment variable.
-                (Ok(ref val), Some(_), Some(default)) if val == "" => {
+                (Ok(ref val), Some(_), Some(default)) if val.is_empty() => {
                     default.as_str().to_owned()
                 }
                 // A set environment variable.
@@ -402,7 +402,7 @@ where
 ///
 /// ```
 /// use std::string::ToString;
-/// use compose_yml::v2 as dc;
+/// use faraday_compose_yml::v2 as dc;
 ///
 /// // We can call `escape`, `value` and `raw` with explicit type
 /// // parameters using the following syntax.
@@ -491,7 +491,7 @@ where
     /// parsing the value would require performing interpolation.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     ///
     /// let bridge = dc::value(dc::NetworkMode::Bridge);
     /// assert_eq!(bridge.value().unwrap(), &dc::NetworkMode::Bridge);
@@ -509,7 +509,7 @@ where
     /// error if parsing the value would require performing interpolation.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     ///
     /// let mut mode = dc::value(dc::NetworkMode::Bridge);
     /// *mode.value_mut().unwrap() = dc::NetworkMode::Host;
@@ -563,7 +563,7 @@ where
     /// ```
     /// use std::env;
     /// use std::str::FromStr;
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     ///
     /// env::set_var("NETWORK_MODE", "host");
     /// let mut mode: dc::RawOr<dc::NetworkMode> =

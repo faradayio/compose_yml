@@ -95,7 +95,7 @@ pub use volume_modes::*;
 pub use volume_mount::*;
 pub use volumes_from::*;
 
-pub(self) mod common {
+mod common {
     pub(crate) use lazy_static::lazy_static;
     #[cfg(windows)]
     pub(crate) use regex::Captures;

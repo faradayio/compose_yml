@@ -136,7 +136,7 @@ impl VolumeMount {
     /// Map a host path to a container path.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     /// dc::VolumeMount::host("./src", "/app");
     /// ```
     pub fn host<P1, P2>(host: P1, container: P2) -> VolumeMount
@@ -155,7 +155,7 @@ impl VolumeMount {
     /// Map a named volume to a container path.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     /// dc::VolumeMount::named("pgvolume", "/app");
     /// ```
     pub fn named<S, P>(name: S, container: P) -> VolumeMount
@@ -196,9 +196,8 @@ impl fmt::Display for VolumeMount {
             return Err(fmt::Error);
         }
 
-        match &self.host {
-            Some(host) => write!(f, "{}:", host)?,
-            None => {}
+        if let Some(host) = &self.host {
+            write!(f, "{}:", host)?
         }
 
         write!(f, "{}", &self.container)?;

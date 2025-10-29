@@ -26,7 +26,7 @@ use super::common::*;
 ///
 /// Here's a simplified example of what it looks like:
 ///
-/// ```
+/// ```ignore
 /// mode_enum! {
 ///     /// How should we configure the container's networking?
 ///     #[derive(Debug, Clone, PartialEq, Eq)]

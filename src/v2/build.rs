@@ -41,7 +41,7 @@ impl Build {
     /// can use struct notation.
     ///
     /// ```
-    /// use compose_yml::v2 as dc;
+    /// use faraday_compose_yml::v2 as dc;
     ///
     /// dc::Build::new(dc::Context::new("app"));
     ///

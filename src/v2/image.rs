@@ -59,7 +59,7 @@ pub struct Image {
 impl Image {
     /// Build an image from an image string.
     pub fn new<S: AsRef<str>>(s: S) -> Result<Image> {
-        Ok(FromStr::from_str(s.as_ref())?)
+        FromStr::from_str(s.as_ref())
     }
 
     /// Return the `Image` with the tag removed.
