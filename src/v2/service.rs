@@ -111,6 +111,10 @@ pub struct Service {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub image: Option<RawOr<Image>>,
 
+    /// Target platform for the container (e.g., "linux/amd64", "linux/arm64").
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub platform: Option<RawOr<String>>,
+
     /// Docker labels for this container, specifying various sorts of
     /// custom metadata.
     #[serde(
@@ -287,6 +291,7 @@ derive_standard_impls_for!(Service, {
     external_links,
     extra_hosts,
     image,
+    platform,
     labels,
     links,
     logging,
